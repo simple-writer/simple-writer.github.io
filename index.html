@@ -323,18 +323,18 @@
         var a = b = c = d = true;
         document.querySelector('.main').onscroll = function(e) {
             if (this.scrollTop >= (this.offsetHeight * 0.5) && b) {
-                document.querySelector('.main .bar.a2 .text').style.animation = 'bara 1.2s both';
-                document.querySelector('.main .bar.a2 .img').style.animation = 'barb 1.2s both';
+                document.querySelector('.main .bar.a2 .text').style.animation = 'barb 1.2s both';
+                document.querySelector('.main .bar.a2 .img').style.animation = 'bara 1.2s both';
                 b = false;
             };
             if (this.scrollTop >= (this.offsetHeight * 1.5) && c) {
-                document.querySelector('.main .bar.a3 .text').style.animation = 'barb 1.2s both';
-                document.querySelector('.main .bar.a3 .img').style.animation = 'bara 1.2s both';
+                document.querySelector('.main .bar.a3 .text').style.animation = 'bara 1.2s both';
+                document.querySelector('.main .bar.a3 .img').style.animation = 'barb 1.2s both';
                 c = false;
             };
             if (this.scrollTop >= (this.offsetHeight * 2.5) && d) {
-                document.querySelector('.main .bar.a4 .text').style.animation = 'bara 1.2s both';
-                document.querySelector('.main .bar.a4 .img').style.animation = 'barb 1.2s both';
+                document.querySelector('.main .bar.a4 .text').style.animation = 'barb 1.2s both';
+                document.querySelector('.main .bar.a4 .img').style.animation = 'bara 1.2s both';
                 d = false;
             };
             if (this.scrollTop >= (this.offsetHeight * 3.5) && a) {
