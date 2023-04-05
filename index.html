@@ -1,16 +1,31 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Writer</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Writer</title>
 </head>
+
 <body>
-  <h1>Simple Writer</h1>
-  <p>一个简洁、强大、美观的Markdown写作软件</p>
-  <p>Status: 正在开发中。。。</p>
-  <p>Version:0.3.4 dev</p>
-  <p> <a href="/simple-writer-online/">预览</a></p>
+    <h1>Simple Writer</h1>
+    <p>一个简洁、强大、美观的Markdown写作软件</p>
+    <p>Status: <span id="status"></span></p>
+    <p>Version:<span id="version"></span></p>
+    <p> <a href="/simple-writer-online/">预览</a></p>
 </body>
+<script>
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', '/simple-writer-online/coding');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            var obj = JSON.parse(xhr.responseText);
+            document.getElementById("status") = obj.status;
+            document.getElementById("version") = obj.version;
+        }
+    }
+    xhr.send();
+</script>
+
 </html>
