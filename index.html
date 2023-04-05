@@ -21,8 +21,8 @@
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
             var obj = JSON.parse(xhr.responseText);
-            document.getElementById("status") = obj.status;
-            document.getElementById("version") = obj.version;
+            document.getElementById("status").innerHTML = obj.status;
+            document.getElementById("version").innerHTML = obj.version;
         }
     }
     xhr.send();
