@@ -2,30 +2,103 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Writer</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Writer</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+    }
+    body{
+      background-color: #f4f4f4;
+    }
+    h1{
+      color: #00baff;
+      text-shadow: #0002 0 1px 5px;
+      font-size: 50px;
+      text-align: center;
+      margin-top: 80px;
+      margin-bottom: 48px;
+    }
+    .jc{
+      text-align: center;
+      font-size: 20px;
+      color: #333;
+      letter-spacing: 5px;
+    }
+    .me{
+      font-size: 15px;
+      color: #555;
+      width: 200px;
+      margin: 10px auto;
+    }
+    .me span{
+      color: #00baff;
+      text-shadow: #0002 0 1px 5px;
+    }
+    .yl{
+      margin: 20px auto;
+      width: max-content;
+      border-radius: 5px;
+      background-color: #00baff;
+    }
+    .yl a{
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+      padding: 5px 30px;
+      display: block;
+    }
+    .updates{
+      max-width: 700px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .updates h2{
+      font-size: 24px;
+      color: #00baff;
+      text-shadow: #0002 0 1px 5px;
+      line-height: 50px;
+    }
+    .updates ul{
+      margin-left: 40px;
+    }
+    .updates ul li{
+      line-height: 30px;
+      margin: 10px 0;
+    }
+  </style>
 </head>
 
 <body>
-    <h1>Simple Writer</h1>
-    <p>一个简洁、强大、美观的Markdown写作软件</p>
-    <p>Status: <span id="status"></span></p>
-    <p>Version:<span id="version"></span></p>
-    <p> <a href="/simple-writer-online/">预览</a></p>
+  <h1>Simple Writer</h1>
+  <p class="jc">一个简洁、强大、美观的Markdown写作软件</p>
+  <p class="me">Status: <span id="status"></span></p>
+  <p class="me">Version:<span id="version"></span></p>
+  <div class="yl"><a href="/simple-writer-online/">预览</a></div>
+  <div class="updates">
+    <h2>更新记录:</h2>
+    <ul id="updates"></ul>
+  </div>
 </body>
 <script>
-    var xhr = new XMLHttpRequest();
-    xhr.open('get', '/simple-writer-online/coding');
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            var obj = JSON.parse(xhr.responseText);
-            document.getElementById("status").innerHTML = obj.status;
-            document.getElementById("version").innerHTML = obj.version;
-        }
+  var xhr = new XMLHttpRequest();
+  xhr.open('get', 'https://simple-writer.github.io/simple-writer-online/coding');
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      var obj = JSON.parse(xhr.responseText);
+      document.getElementById("status").innerHTML = obj.status;
+      document.getElementById("version").innerHTML = obj.version;
+      for(var k in obj.update){
+        var li=document.createElement('li');
+        li.innerHTML='<h3>'+k+'</h3><p>'+obj.update[k]+'</p>';
+        document.getElementById("updates").append(li);
+      }
     }
-    xhr.send();
+  }
+  xhr.send();
 </script>
 
 </html>
