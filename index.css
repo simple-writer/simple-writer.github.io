@@ -60,6 +60,7 @@ main{
   box-sizing: border-box;
   padding: 100px;
   float: left;
+  position: relative;
 }
 main h1{
   font-size: 60px;
@@ -127,4 +128,12 @@ main p.js{
   .tip{
     display: flex;
   }
+}
+main img{
+  width: 600px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 100px;
+  z-index: -1;
 }
