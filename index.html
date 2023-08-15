@@ -1,104 +1,49 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple Writer</title>
-  <style>
-    *{
-      margin:0;
-      padding:0;
-    }
-    body{
-      background-color: #f4f4f4;
-    }
-    h1{
-      color: #00baff;
-      text-shadow: #0002 0 1px 5px;
-      font-size: 50px;
-      text-align: center;
-      margin-top: 80px;
-      margin-bottom: 48px;
-    }
-    .jc{
-      text-align: center;
-      font-size: 20px;
-      color: #333;
-      letter-spacing: 5px;
-    }
-    .me{
-      font-size: 15px;
-      color: #555;
-      width: 200px;
-      margin: 10px auto;
-    }
-    .me span{
-      color: #00baff;
-      text-shadow: #0002 0 1px 5px;
-    }
-    .yl{
-      margin: 20px auto;
-      width: max-content;
-      border-radius: 5px;
-      background-color: #00baff;
-    }
-    .yl a{
-      color: #fff;
-      text-decoration: none;
-      font-size: 20px;
-      padding: 5px 30px;
-      display: block;
-    }
-    .updates{
-      max-width: 700px;
-      width: 100%;
-      margin: 0 auto;
-    }
-    .updates h2{
-      font-size: 24px;
-      color: #00baff;
-      text-shadow: #0002 0 1px 5px;
-      line-height: 50px;
-    }
-    .updates ul{
-      margin-left: 40px;
-    }
-    .updates ul li{
-      line-height: 30px;
-      margin: 10px 0;
-    }
-  </style>
+  <link rel="stylesheet" href="./index.css">
 </head>
-
 <body>
-  <h1>Simple Writer</h1>
-  <p class="jc">一个简洁、强大、美观的Markdown写作软件</p>
-  <p class="me">Status: <span id="status"></span></p>
-  <p class="me">Version:<span id="version"></span></p>
-  <div class="yl"><a href="/simple-writer-online/">预览</a></div>
-  <div class="updates">
-    <h2>更新记录:</h2>
-    <ul id="updates"></ul>
+  <div class="topbar">
+    <div class="logo">Simple Writer</div>
+    <ul>
+      <li class="act"><a href="./">首页</a></li>
+      <li><a href="./help.html">帮助文档</a></li>
+      <li><a href="https://simple-writer.github.io/simple-writer-online/">使用在线版</a></li>
+      <li><a href="./download.html">下载</a></li>
+    </ul>
+    <a href="https://simple-writer.github.io/simple-writer-online/" class="startuse">开始使用</a>
+  </div>
+  <main>
+    <h1>Simple Writer</h1>
+    <p>一个简单、纯粹的写作软件</p>
+    <button onclick="window.location.href='https://simple-writer.github.io/simple-writer-online/';">快速开始</button>
+    <p class="js">打开Simple Writer网页版</p>
+  </main>
+  <main class="half">
+    <h1>功能至简</h1>
+    <p>仅保留你平时在纸上写作的格式：</p>
+    <p>标题、段落、引用</p>
+  </main>
+  <main class="half">
+    <h1>上手简单</h1>
+    <p>Ctrl+Alt+1/2/3 新建大中小标题<br>Ctrl+Q 添加引用<br>Ctrl+S 保存<br>Ctrl+Shift+S 另存为</p>
+    <p>仅此而已</p>
+  </main>
+  <main>
+    <h1>更注重灵感的创作</h1>
+    <h1>欢迎使用Simple Writer</h1>
+    <button onclick="window.location.href='https://simple-writer.github.io/simple-writer-online/';">快速开始</button>
+    <p class="js">打开Simple Writer网页版</p>
+  </main>
+  <div class="tip">
+    <p>你说，用电脑写作是不是更好呢？</p>
+    <p>用电脑打开吧！</p>
+    <p>哪有电脑屏幕尺寸这么小的</p>
   </div>
 </body>
-<script>
-  var xhr = new XMLHttpRequest();
-  xhr.open('get', 'https://simple-writer.github.io/simple-writer-online/coding');
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      var obj = JSON.parse(xhr.responseText);
-      document.getElementById("status").innerHTML = obj.status;
-      document.getElementById("version").innerHTML = obj.version;
-      for(var k in obj.update){
-        var li=document.createElement('li');
-        li.innerHTML='<h3>'+k+'</h3><p>'+obj.update[k]+'</p>';
-        document.getElementById("updates").append(li);
-      }
-    }
-  }
-  xhr.send();
-</script>
-
 </html>
